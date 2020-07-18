@@ -1,3 +1,4 @@
+require 'pry'
 require_relative '../../config/environment'
 class ApplicationController < Sinatra::Base
   configure do
@@ -12,6 +13,7 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do
     @user = User.new(username: params["username"], password: params["password"], balance: params["balance"])
+    #`binding.pry
     @user.save
     if @user
       session[:user_id] = @user.id
